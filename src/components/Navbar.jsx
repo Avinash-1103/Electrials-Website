@@ -18,18 +18,15 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="fixed w-full z-50 bg-white/30 dark:bg-black/30 backdrop-blur-md border-b border-white/10 dark:border-white/5">
-      <nav className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+    <header className="fixed w-full z-50 bg-gradient-to-r from-white/30 to-white/10 dark:from-black/40 dark:to-black/10 backdrop-blur-lg border-b border-white/10 dark:border-white/5 shadow-sm">
+      <nav className="max-w-7xl mx-auto px-4 py-2 flex justify-between items-center">
         {/* Logo */}
-        <Link
-          to="/"
-          className="flex items-center gap-2 font-semibold tracking-wide"
-        >
-          <span className="inline-flex h-8 w-8 rounded-xl bg-blue-500/10 items-center justify-center shadow-glow">
+        <Link to="/" className="flex items-center gap-2">
+          <span className="inline-flex h-8 w-8 rounded-lg bg-blue-500/20 items-center justify-center">
             ⚡
           </span>
-          <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text">
-            Electric MSCB Contractor
+          <h1 className="text-lg sm:text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text whitespace-nowrap">
+            Electric MSCB
           </h1>
         </Link>
 
@@ -52,26 +49,25 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* Right side buttons */}
-        <div className="flex items-center gap-3">
+        {/* Right side icons */}
+        <div className="flex items-center space-x-2 sm:space-x-4">
           {/* Dark mode toggle */}
           <button
             onClick={toggle}
             aria-label="Toggle dark mode"
-            className="rounded-xl border border-gray-200 dark:border-gray-800 p-2 hover:shadow-glow transition-shadow"
-            title={
-              theme === "dark"
-                ? "Switch to light mode"
-                : "Switch to dark mode"
-            }
+            className="rounded-lg border border-gray-300 dark:border-gray-700 p-2 hover:shadow-md transition"
           >
-            {theme === "dark" ? <FiSun /> : <FiMoon />}
+            {theme === "dark" ? (
+              <FiSun className="text-yellow-400" />
+            ) : (
+              <FiMoon className="text-blue-500" />
+            )}
           </button>
 
-          {/* Mobile menu button */}
+          {/* Mobile Menu Button */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden p-2 rounded-lg bg-white/20 dark:bg-white/10"
+            className="md:hidden p-2 rounded-lg bg-white/30 dark:bg-white/10 border border-white/20"
           >
             {menuOpen ? (
               <X className="w-6 h-6 text-blue-400" />
@@ -82,16 +78,16 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Animated mobile menu */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {menuOpen && (
           <motion.ul
             key="mobileMenu"
-            initial={{ opacity: 0, y: -10 }}
+            initial={{ opacity: 0, y: -15 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-            className="md:hidden bg-white/80 dark:bg-black/80 backdrop-blur-lg border-t border-white/10 text-gray-800 dark:text-gray-200 font-medium"
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+            className="md:hidden bg-white/90 dark:bg-black/90 backdrop-blur-lg border-t border-white/10 text-gray-800 dark:text-gray-200 font-medium"
           >
             {navItems.map((item) => (
               <li

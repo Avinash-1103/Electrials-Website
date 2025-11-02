@@ -1,50 +1,74 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { FiFacebook, FiInstagram, FiLinkedin, FiPhone } from 'react-icons/fi'
+import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <footer className="mt-16 border-t border-gray-200/60 dark:border-gray-800/60">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 grid gap-8 md:grid-cols-4">
-        <div className="space-y-3">
-          <h3 className="font-semibold text-lg">Electric MSCB Contractor</h3>
-          <p className="text-sm text-gray-600 dark:text-gray-400">
-            License No: <span className="font-mono">MSCB-XXXX-2025</span>
-          </p>
-          <p className="text-sm text-gray-600 dark:text-gray-400">
-            Trusted Electrical Solutions for Residential, Commercial and Industrial Projects.
+    <footer className="bg-white/10 dark:bg-black/40 backdrop-blur-xl border-t border-gray-200/20 dark:border-gray-700/20 mt-24">
+      <div className="max-w-7xl mx-auto px-6 py-10 grid sm:grid-cols-2 md:grid-cols-4 gap-10 text-center sm:text-left">
+        {/* Brand */}
+        <div>
+          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-2">
+            Electric MSCB Contractor
+          </h2>
+          <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+            Licensed MSCB contractor providing professional electrical
+            installation, repair, and maintenance services across Maharashtra.
           </p>
         </div>
+
+        {/* Quick Links */}
         <div>
-          <h4 className="font-semibold mb-3">Quick Links</h4>
-          <ul className="space-y-2 text-sm">
-            <li><Link className="hover:text-electric.blue" to="/">Home</Link></li>
-            <li><Link className="hover:text-electric.blue" to="/about">About</Link></li>
-            <li><Link className="hover:text-electric.blue" to="/services">Services</Link></li>
-            <li><Link className="hover:text-electric.blue" to="/projects">Projects</Link></li>
-            <li><Link className="hover:text-electric.blue" to="/contact">Contact</Link></li>
+          <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-3">
+            Quick Links
+          </h3>
+          <ul className="space-y-2">
+            {["Home", "About", "Services", "Projects", "Contact"].map((link) => (
+              <li key={link}>
+                <Link
+                  to={`/${link === "Home" ? "" : link.toLowerCase()}`}
+                  className="text-gray-600 dark:text-gray-400 hover:text-blue-500 dark:hover:text-purple-400 transition"
+                >
+                  {link}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
+
+        {/* Services */}
         <div>
-          <h4 className="font-semibold mb-3">Contact</h4>
-          <ul className="space-y-2 text-sm">
-            <li className="flex items-center gap-2"><FiPhone/> <a href="tel:+919999999999">+91 99999 99999</a></li>
-            <li>Email: <a className="hover:text-electric.blue" href="mailto:info@example.com">info@example.com</a></li>
-            <li>Address: 123 Industrial Estate, Pune, MH</li>
+          <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-3">
+            Services
+          </h3>
+          <ul className="space-y-2">
+            <li className="text-gray-600 dark:text-gray-400">Residential Wiring</li>
+            <li className="text-gray-600 dark:text-gray-400">Industrial Projects</li>
+            <li className="text-gray-600 dark:text-gray-400">Solar Installations</li>
+            <li className="text-gray-600 dark:text-gray-400">Maintenance & Repair</li>
           </ul>
         </div>
+
+        {/* Contact */}
         <div>
-          <h4 className="font-semibold mb-3">Follow</h4>
-          <div className="flex gap-4 text-xl">
-            <a href="#" aria-label="Facebook" className="hover:text-electric.blue"><FiFacebook/></a>
-            <a href="#" aria-label="Instagram" className="hover:text-electric.blue"><FiInstagram/></a>
-            <a href="#" aria-label="LinkedIn" className="hover:text-electric.blue"><FiLinkedin/></a>
-          </div>
+          <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-3">
+            Contact
+          </h3>
+          <p className="text-gray-600 dark:text-gray-400 text-sm">
+            📍 Sangli, Maharashtra
+          </p>
+          <p className="text-gray-600 dark:text-gray-400 text-sm">
+            📞 +91 98765 43210
+          </p>
+          <p className="text-gray-600 dark:text-gray-400 text-sm">
+            ✉️ info@electrials.com
+          </p>
         </div>
       </div>
-      <div className="py-6 text-center text-xs text-gray-500 dark:text-gray-400">
-        © <span>{new Date().getFullYear()}</span> Electric MSCB Contractor. All rights reserved.
+
+      {/* Bottom bar */}
+      <div className="border-t border-gray-200/20 dark:border-gray-700/20 text-center py-4 text-sm text-gray-600 dark:text-gray-400">
+        © {new Date().getFullYear()} Electric MSCB Contractor — All Rights Reserved.
       </div>
     </footer>
-  )
+  );
 }

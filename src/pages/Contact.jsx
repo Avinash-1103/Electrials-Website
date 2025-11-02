@@ -1,92 +1,127 @@
-import React, { useState } from 'react'
-import { Helmet } from 'react-helmet-async'
-import AnimatedSection from '../components/AnimatedSection'
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { Phone, Mail, MapPin, Send } from "lucide-react";
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', phone: '', email: '', message: '' })
-  const [errors, setErrors] = useState({})
-  const [sent, setSent] = useState(false)
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
 
-  const validate = () => {
-    const e = {}
-    if (!form.name.trim()) e.name = 'Name is required'
-    if (!/^\+?\d[\d\s-]{7,}$/.test(form.phone)) e.phone = 'Valid phone is required'
-    if (!/^\S+@\S+\.\S+$/.test(form.email)) e.email = 'Valid email is required'
-    if (!form.message.trim()) e.message = 'Message is required'
-    setErrors(e)
-    return Object.keys(e).length === 0
-  }
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-  const submit = (ev) => {
-    ev.preventDefault()
-    if (!validate()) return
-    // simulate success
-    setSent(true)
-  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert("Thank you for contacting us! We’ll get back to you soon.");
+    setFormData({ name: "", email: "", message: "" });
+  };
 
   return (
-    <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <Helmet>
-        <title>Contact — Electric MSCB Contractor</title>
-      </Helmet>
+    <section className="relative min-h-screen px-6 py-20 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-black dark:to-gray-950 text-gray-900 dark:text-gray-100">
+      {/* Glow Effects */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute top-20 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-[120px]" />
+        <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-purple-500/20 rounded-full blur-[100px]" />
+      </div>
 
-      <AnimatedSection>
-        <h1 className="text-3xl font-bold">Contact Us</h1>
-        <p className="mt-4 text-gray-600 dark:text-gray-400">We usually respond within the same business day.</p>
+      <motion.h1
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="text-4xl md:text-5xl font-extrabold text-center mb-8"
+      >
+        Contact{" "}
+        <span className="bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text">
+          Us
+        </span>
+      </motion.h1>
 
-        <div className="mt-8 grid md:grid-cols-2 gap-8">
-          <form onSubmit={submit} className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium">Name</label>
-              <input value={form.name} onChange={(e)=>setForm({...form, name:e.target.value})} className="mt-1 w-full rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 px-3 py-2 outline-none focus:ring-2 focus:ring-electric.blue" />
-              {errors.name && <p className="text-sm text-red-500 mt-1">{errors.name}</p>}
-            </div>
-            <div>
-              <label className="block text-sm font-medium">Phone</label>
-              <input value={form.phone} onChange={(e)=>setForm({...form, phone:e.target.value})} className="mt-1 w-full rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 px-3 py-2 outline-none focus:ring-2 focus:ring-electric.blue" />
-              {errors.phone && <p className="text-sm text-red-500 mt-1">{errors.phone}</p>}
-            </div>
-            <div>
-              <label className="block text-sm font-medium">Email</label>
-              <input value={form.email} onChange={(e)=>setForm({...form, email:e.target.value})} className="mt-1 w-full rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 px-3 py-2 outline-none focus:ring-2 focus:ring-electric.blue" />
-              {errors.email && <p className="text-sm text-red-500 mt-1">{errors.email}</p>}
-            </div>
-            <div>
-              <label className="block text-sm font-medium">Message</label>
-              <textarea rows="4" value={form.message} onChange={(e)=>setForm({...form, message:e.target.value})} className="mt-1 w-full rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 px-3 py-2 outline-none focus:ring-2 focus:ring-electric.blue"></textarea>
-              {errors.message && <p className="text-sm text-red-500 mt-1">{errors.message}</p>}
-            </div>
-            <button type="submit" className="px-6 py-3 rounded-2xl bg-electric.blue text-white font-medium hover:translate-y-[-1px] transition-transform">Send Message</button>
-            {sent && <p className="text-green-600">Thanks! We will get back to you shortly.</p>}
-          </form>
+      <p className="text-center max-w-3xl mx-auto text-gray-700 dark:text-gray-300 mb-16">
+        Have a question, project, or need an electrical expert? Reach out to us
+        and we’ll be happy to assist you.
+      </p>
 
-          <div className="space-y-4">
-            <div className="aspect-video rounded-2xl overflow-hidden border border-gray-200/60 dark:border-gray-800/60">
-              <iframe
-                title="Google Maps"
-                className="w-full h-full"
-                loading="lazy"
-                allowFullScreen
-                referrerPolicy="no-referrer-when-downgrade"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.534!2d73.8567!3d18.5204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c06!2sPune!5e0!3m2!1sen!2sin!4v1680000000000">
-              </iframe>
+      <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        {/* Contact Info */}
+        <motion.div
+          initial={{ opacity: 0, x: -40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          className="bg-white/20 dark:bg-black/30 backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-xl"
+        >
+          <h2 className="text-2xl font-bold mb-6">Get In Touch</h2>
+          <div className="space-y-4 text-gray-700 dark:text-gray-300">
+            <div className="flex items-center gap-4">
+              <Phone className="w-5 h-5 text-blue-500" />
+              <span>+91 98765 43210</span>
             </div>
-            <div className="rounded-2xl border border-gray-200/60 dark:border-gray-800/60 p-4">
-              <p><strong>Phone:</strong> <a href="tel:+919999999999" className="hover:text-electric.blue">+91 99999 99999</a></p>
-              <p><strong>WhatsApp:</strong> <a href="https://wa.me/919999999999" className="hover:text-electric.blue" target="_blank" rel="noreferrer">Chat on WhatsApp</a></p>
-              <p><strong>Email:</strong> <a href="mailto:info@example.com" className="hover:text-electric.blue">info@example.com</a></p>
+            <div className="flex items-center gap-4">
+              <Mail className="w-5 h-5 text-purple-500" />
+              <span>info@electrials.com</span>
+            </div>
+            <div className="flex items-center gap-4">
+              <MapPin className="w-5 h-5 text-green-500" />
+              <span>Sangli, Maharashtra, India</span>
             </div>
           </div>
-        </div>
 
-        <a
-          href="https://wa.me/919999999999"
-          className="fixed bottom-6 right-6 rounded-full shadow-glow bg-green-500 text-white px-4 py-3"
-          aria-label="WhatsApp"
+          <div className="mt-8 text-sm text-gray-600 dark:text-gray-400">
+            <p>Working Hours:</p>
+            <p>Mon - Sat: 9:00 AM – 6:00 PM</p>
+            <p>Sunday: Closed</p>
+          </div>
+        </motion.div>
+
+        {/* Contact Form */}
+        <motion.form
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          onSubmit={handleSubmit}
+          className="bg-white/20 dark:bg-black/30 backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-xl"
         >
-          WhatsApp
-        </a>
-      </AnimatedSection>
-    </main>
-  )
+          <h2 className="text-2xl font-bold mb-6">Send Us a Message</h2>
+          <div className="space-y-5">
+            <input
+              type="text"
+              name="name"
+              placeholder="Your Name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+              className="w-full p-3 rounded-xl bg-white/50 dark:bg-white/10 border border-white/20 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Your Email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              className="w-full p-3 rounded-xl bg-white/50 dark:bg-white/10 border border-white/20 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            <textarea
+              name="message"
+              placeholder="Your Message"
+              value={formData.message}
+              onChange={handleChange}
+              required
+              rows="5"
+              className="w-full p-3 rounded-xl bg-white/50 dark:bg-white/10 border border-white/20 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            ></textarea>
+
+            <button
+              type="submit"
+              className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold hover:from-blue-600 hover:to-purple-600 transition-all hover:scale-105 shadow-lg shadow-blue-500/20"
+            >
+              Send Message <Send className="w-5 h-5" />
+            </button>
+          </div>
+        </motion.form>
+      </div>
+    </section>
+  );
 }
