@@ -26,7 +26,7 @@ export default function Navbar() {
             ⚡
           </span>
           <h1 className="text-lg sm:text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text whitespace-nowrap">
-            Electric MSCB
+            Electric MSEB
           </h1>
         </Link>
 

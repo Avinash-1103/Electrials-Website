@@ -141,7 +141,7 @@ export default function About() {
             alt="Lead Contractor"
             className="w-32 h-32 mx-auto rounded-full object-cover mb-4 border-4 border-blue-500/40 shadow-lg"
           />
-          <h3 className="text-xl font-semibold">Mr. Avinash Patil</h3>
+          <h3 className="text-xl font-semibold">Mr. GIRISH BHOSALE</h3>
           <p className="text-blue-500 dark:text-blue-400 text-sm mb-4">
             Licensed MSCB Electrical Contractor
           </p>

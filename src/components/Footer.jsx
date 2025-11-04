@@ -57,7 +57,7 @@ export default function Footer() {
             📍 Sangli, Maharashtra
           </p>
           <p className="text-gray-600 dark:text-gray-400 text-sm">
-            📞 +91 98765 43210
+            📞 +91 84 0796 1260
           </p>
           <p className="text-gray-600 dark:text-gray-400 text-sm">
             ✉️ info@electrials.com
