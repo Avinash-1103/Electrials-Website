@@ -1,23 +1,41 @@
-import React, { createContext, useContext, useEffect, useState } from 'react'
+import React, { createContext, useContext, useEffect, useState } from "react";
 
-const ThemeContext = createContext({ theme: 'light', toggle: () => {} })
+const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'light')
+  const [theme, setTheme] = useState("system");
 
+  // 🌗 Detect and follow system theme automatically
   useEffect(() => {
-    const root = document.documentElement
-    if (theme === 'dark') {
-      root.classList.add('dark')
-    } else {
-      root.classList.remove('dark')
-    }
-    localStorage.setItem('theme', theme)
-  }, [theme])
+    const systemDark = window.matchMedia("(prefers-color-scheme: dark)");
 
-  const toggle = () => setTheme(t => (t === 'dark' ? 'light' : 'dark'))
+    const applyTheme = (isDark) => {
+      document.documentElement.classList.toggle("dark", isDark);
+      setTheme(isDark ? "dark" : "light");
+    };
 
-  return <ThemeContext.Provider value={{ theme, toggle }}>{children}</ThemeContext.Provider>
-}
+    // Apply on load
+    applyTheme(systemDark.matches);
 
-export const useTheme = () => useContext(ThemeContext)
+    // Listen for OS theme changes
+    const handleChange = (e) => applyTheme(e.matches);
+    systemDark.addEventListener("change", handleChange);
+
+    return () => systemDark.removeEventListener("change", handleChange);
+  }, []);
+
+  // Manual toggle
+  const toggle = () => {
+    const newTheme = theme === "dark" ? "light" : "dark";
+    setTheme(newTheme);
+    document.documentElement.classList.toggle("dark", newTheme === "dark");
+  };
+
+  return (
+    <ThemeContext.Provider value={{ theme, toggle }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+};
+
+export const useTheme = () => useContext(ThemeContext);
