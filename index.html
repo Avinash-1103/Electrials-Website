@@ -12,5 +12,15 @@
   <body class="bg-white text-gray-800 dark:bg-gray-950 dark:text-gray-100">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script>
+      // Handle redirect from 404.html
+      (function () {
+        var params = new URLSearchParams(window.location.search);
+        var redirect = params.get("redirect");
+        if (redirect) {
+          window.history.replaceState(null, "", redirect);
+        }
+      })();
+    </script>
   </body>
 </html>
