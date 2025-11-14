@@ -47,7 +47,7 @@ export default function About() {
         >
           <div className="rounded-3xl overflow-hidden shadow-2xl border border-white/10 hover:shadow-blue-500/20 transition-all duration-500">
             <img
-              src="https://images.unsplash.com/photo-1581091215367-59ab6d7e69e3?q=80&w=800"
+              src="/image.jpg"
               alt="Contractor"
               className="w-full h-[420px] object-cover hover:scale-105 transition-transform duration-700"
             />
