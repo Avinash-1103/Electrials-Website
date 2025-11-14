@@ -8,10 +8,10 @@ export default function Footer() {
         {/* Brand */}
         <div>
           <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-2">
-            Electric MSCB Contractor
+            Electric MSEB Contractor
           </h2>
           <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-            Licensed MSCB contractor providing professional electrical
+            Licensed MSEB contractor providing professional electrical
             installation, repair, and maintenance services across Maharashtra.
           </p>
         </div>

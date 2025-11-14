@@ -34,7 +34,7 @@ export default function Hero() {
             Trusted Electrical Solutions
           </h1>
           <p className="text-lg md:text-xl text-gray-300">
-            Certified MSCB Contractor — Reliable, Safe, and On-Time Execution.
+            Certified MSEB Contractor — Reliable, Safe, and On-Time Execution.
           </p>
           <motion.a
             href="#contact"

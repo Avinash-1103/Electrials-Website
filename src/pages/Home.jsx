@@ -27,7 +27,7 @@ export default function Home() {
         </h1>
 
         <p className="text-gray-700 dark:text-gray-300 text-lg sm:text-xl mb-8 leading-relaxed">
-          Certified MSCB Contractor delivering reliable, safe, and on-time
+          Certified MSEB Contractor delivering reliable, safe, and on-time
           electrical solutions for homes, businesses, and industries across
           Maharashtra.
         </p>
@@ -58,7 +58,7 @@ export default function Home() {
       >
         <div className="w-44 h-44 md:w-56 md:h-56 rounded-3xl overflow-hidden shadow-xl border border-white/10">
           <img
-            src="https://images.unsplash.com/photo-1581091215367-59ab6d7e69e3?q=80&w=800"
+            src="/image.jpg"
             alt="Contractor"
             className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
           />

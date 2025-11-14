@@ -137,13 +137,13 @@ export default function About() {
         </h2>
         <div className="max-w-xl mx-auto bg-white/20 dark:bg-black/40 backdrop-blur-xl rounded-3xl p-8 shadow-2xl border border-white/10">
           <img
-            src="https://images.unsplash.com/photo-1605618272851-d57fa211c50b?q=80&w=600"
+            src="/image.jpg"
             alt="Lead Contractor"
             className="w-32 h-32 mx-auto rounded-full object-cover mb-4 border-4 border-blue-500/40 shadow-lg"
           />
           <h3 className="text-xl font-semibold">Mr. GIRISH BHOSALE</h3>
           <p className="text-blue-500 dark:text-blue-400 text-sm mb-4">
-            Licensed MSCB Electrical Contractor
+            Licensed MSEB Electrical Contractor
           </p>
           <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
             “Our goal is to power Maharashtra with safe, efficient, and reliable
