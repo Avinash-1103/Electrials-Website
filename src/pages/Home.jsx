@@ -69,9 +69,9 @@ export default function Home() {
             About Our Contractor
           </h2>
           <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
-            With over <span className="font-semibold text-blue-500">10+ years</span> of
+            With over <span className="font-semibold text-blue-500">6+ years</span> of
             professional experience, we deliver high-quality electrical projects
-            backed by MSCB certification and a strong focus on safety and
+            backed by MSEB certification and a strong focus on safety and
             precision.
           </p>
           <p className="text-gray-600 dark:text-gray-400 text-sm mb-6">

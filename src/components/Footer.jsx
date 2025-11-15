@@ -60,14 +60,14 @@ export default function Footer() {
             📞 +91 84 0796 1260
           </p>
           <p className="text-gray-600 dark:text-gray-400 text-sm">
-            ✉️ info@electrials.com
+            ✉️ dhanashreeelectrials@gmail.com
           </p>
         </div>
       </div>
 
       {/* Bottom bar */}
       <div className="border-t border-gray-200/20 dark:border-gray-700/20 text-center py-4 text-sm text-gray-600 dark:text-gray-400">
-        © {new Date().getFullYear()} Electric MSCB Contractor — All Rights Reserved.
+        © {new Date().getFullYear()} Electric MSEB Contractor — All Rights Reserved.
       </div>
     </footer>
   );

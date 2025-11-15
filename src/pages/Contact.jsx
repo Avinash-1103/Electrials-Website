@@ -13,9 +13,33 @@ export default function Contact() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("Thank you for contacting us! We’ll get back to you soon.");
+
+    const { name, email, message } = formData;
+
+    // WhatsApp Text Format
+    const text =
+      `Name: ${name}%0A` +
+      `Email: ${email}%0A` +
+      `Message: ${message}`;
+
+    // OPEN WHATSAPP (replace YOUR_WHATSAPP_NUMBER)
+    window.open(`https://wa.me/918407961260?text=${text}`, "_blank");
+
+    // SAVE TO GOOGLE SHEETS (replace YOUR_GOOGLE_SHEET_WEB_APP_LINK)
+    try {
+      await fetch("https://script.google.com/macros/s/AKfycbyfSR_L295ntL5ZQN3uxPDNkOvVXTLVBf3mjufXmAUgjq3419-v9nnXEjNajOJBaSCa-w/exec", {
+        method: "POST",
+        body: JSON.stringify({ name, email, message }),
+      });
+      alert("Thank you! Your message has been sent.");
+    } catch (err) {
+      console.error(err);
+      alert("Something went wrong. Please try again.");
+    }
+
+    // Reset form
     setFormData({ name: "", email: "", message: "" });
   };
 
@@ -60,7 +84,7 @@ export default function Contact() {
             </div>
             <div className="flex items-center gap-4">
               <Mail className="w-5 h-5 text-purple-500" />
-              <span>info@electrials.com</span>
+              <span>dhanashreeelectrials@gmail.com</span>
             </div>
             <div className="flex items-center gap-4">
               <MapPin className="w-5 h-5 text-green-500" />
